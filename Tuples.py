@@ -1,61 +1,103 @@
-''' Loop operators 
-(1) For 
-(2) Break/Else
-(3) While
+''' Tuples
+(1) What is Tuple: tuple vs list 
+(2) Unpacking arguments
+(3) zip
 '''
-print("====== For Operators ========")
 
-# Iterable objects > string | dict | tuple | list | range | map | filter
 
-text = "MIT"
-numbs = [8, 5, 3, 4]
-car_obj = dict(brand="Cobalt", Year=2026)
-range_obj = range(5)  # [0-5)
+print("====== What is Tuple: tuple vs list  ========")
 
-for letter in text:
-    print(f"the letter:{letter}")
+# Java | PhP | NodeJs > array => Python list
 
-print("-"*18)
+# Literal
+numbs = [3, 5, 7, 1]
 
-for number in numbs:
-    print(f"the number:{number}")
+# Constructor
 
-print("-"*18)
+letters = list("Hello World!")
 
-for key in car_obj:
-    print(f"the key:{key} => value: {car_obj.get(key)}")
+fruits = ["apple", "peach", "lemon", "cherry"]
+print("before fruits:", fruits)
+
+fruits[3] = "melon"
 
 print("-"*18)
 
+print("after fruits:", fruits)
 
-print("====== Break/Else ========")
+print("-"*18)
+# we can not mutate TUPLE
 
-for x in range(1, 20, 5):
-    print(f"the x: {x}")
-    if x > 10:
-        print("Reached break")
-        break
-else:
-    print("Exucuted successfully")
+animals = ("dog", "cat", "horse", "zebra")
+tuple_obj = ("MIT", 100, True, None)
+
+print(animals[0])
+# animals[0] = "Bird"
 
 print("-"*18)
 
-print("====== While Operator ========")
+# Try to avoid these
+people = "Jhon", "Jack"
+animals = "dog", "cat"
 
-numb = 40
-while numb > 0:
-    numb -= 10
-    print(f"the numb equals {numb}")
+print("====== Unpacking arguments ========")
+
+clubs = ["Barca", "Real", "MU", "PSG"]
+(x, y, *z) = clubs
+print(f"the x: {x} and the y: {y}")
 
 print("-"*18)
 
-count = 0
-while True:
-    count += 1
-    x = int(input("Find the number"))
+print("z:", z)  # list
 
-    if x == 6:
-        print(f"You found the number {count} attempts")
-        break
-    else:
-        print("Wrong, try again!")
+
+# *args > tuple
+
+def calculate(*args):
+    total = 1
+    for x in args:
+        total *= x
+        print(f"the total value: {total}")
+        return total
+
+
+# CALL
+
+calculate(3, 22, 8, 2)
+calculate(8, 83, 12, 4)
+calculate(7, 10,)
+
+print("-"*18)
+
+# *kwargs > dictionary
+
+
+def introduce(**kwargs):
+    # print(f"the type(**kwargs) value: {type(kwargs)}")
+    print(f"Hi, I'm {kwargs["name"]} and I'm {kwargs["age"]}years old")
+
+
+# CALL
+
+introduce(name="Shawn", age=28)
+introduce(name="Tom", age=42, single=True)
+
+
+def greeting(*args, **kwargs):
+    print("*args >", args)
+    print("**kwargs >", kwargs)
+
+
+# CALL
+greeting("hi", True, 100, name="Stive", age=22)
+
+
+print("====== zip ========")
+
+tuple1 = (1, 2, 3, 4)
+tuple2 = ('a', 'b', 'c', 'd')
+
+zipped = zip(tuple1, tuple2)
+print("zipped:", zipped)
+result = list(zipped)
+print(f"the result: {result}")
