@@ -33,4 +33,15 @@ git pull origin master
 - Array
 - Comprehension
 - Debugging
-- . . . .
+
+## Pip commands
+
+'''
+Macos Pip3
+
+pip list
+pip install (pillow)
+pip uninstall
+pip show
+pip freeze
+'''
